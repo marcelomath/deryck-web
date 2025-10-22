@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deryck — Welcome</title>
+  <title>Deryck — Welcome to My Universe</title>
   <style>
+    /* Fundo espacial */
     body {
       margin: 0;
       height: 100vh;
@@ -12,36 +13,155 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #000;
-      font-family: Arial, Helvetica, sans-serif;
-      color: white;
+      background: radial-gradient(ellipse at bottom, #0b132b 0%, #000 100%);
+      overflow: hidden;
+      font-family: "Poppins", Arial, sans-serif;
       text-align: center;
-      padding: 20px;
+      color: white;
     }
 
+    /* Camada de estrelas animadas */
+    .stars {
+      width: 2px;
+      height: 2px;
+      background: transparent;
+      box-shadow:
+        500px 200px white, 100px 300px white, 300px 100px white,
+        250px 400px white, 700px 500px white, 900px 200px white,
+        1200px 350px white, 50px 600px white, 400px 700px white,
+        800px 800px white, 1100px 150px white, 1300px 500px white,
+        1500px 400px white, 1600px 700px white, 1750px 250px white,
+        1800px 600px white, 1900px 350px white;
+      animation: animStars 60s linear infinite;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+
+    @keyframes animStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-1000px); }
+    }
+
+    /* Avatar flutuante */
     .avatar {
       font-size: 80px;
       margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      animation: float 4s ease-in-out infinite;
     }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Texto com brilho */
     h1 {
-      font-size: clamp(20px, 5vw, 34px);
+      font-size: clamp(22px, 5vw, 36px);
       background: linear-gradient(90deg, #00E6A0, #47D2FF, #9B7BFF, #FF7BAC);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin: 0 0 10px 0;
+      margin: 0 0 12px 0;
+      z-index: 1;
+      animation: shine 3s ease-in-out infinite alternate;
     }
 
+    @keyframes shine {
+      0% { filter: drop-shadow(0 0 3px #47D2FF); opacity: 0.8; }
+      50% { filter: drop-shadow(0 0 8px #FF7BAC); opacity: 1; }
+      100% { filter: drop-shadow(0 0 3px #9B7BFF); opacity: 0.9; }
+    }
+
+    /* Subtexto */
     p {
       font-size: clamp(14px, 3vw, 18px);
       color: #d3d3d3;
       margin: 0;
+      position: relative;
+      z-index: 1;
+      opacity: 0.9;
+    }
+
+    /* Links sociais */
+    .socials {
+      position: fixed;
+      bottom: 60px;
+      display: flex;
+      gap: 20px;
+      z-index: 2;
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+
+    .socials a:hover {
+      transform: scale(1.15);
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 10px #47D2FF;
+    }
+
+    .socials img {
+      width: 22px;
+      height: 22px;
+      filter: brightness(0) invert(1);
+    }
+
+    /* Rodapé com assinatura */
+    footer {
+      position: fixed;
+      bottom: 15px;
+      font-size: 13px;
+      color: #aaa;
+      z-index: 2;
+      opacity: 0.8;
+    }
+
+    footer span {
+      color: #47D2FF;
+      text-shadow: 0 0 5px #47D2FF;
+    }
+
+    @media (max-width: 400px) {
+      .avatar { font-size: 60px; }
+      .socials { gap: 14px; }
     }
   </style>
 </head>
 <body>
+  <div class="stars"></div>
+
   <div class="avatar">🧑🏾‍💻</div>
-  <h1>Hello! I’m Deryck — I’m a computer programmer. Welcome to my world!</h1>
+  <h1>Hello! I’m Deryck — I’m a computer programmer. Welcome to my universe!</h1>
   <p>Here you can learn everything about me.</p>
+
+  <div class="socials">
+    <a href="https://github.com/teu-usuario" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+    </a>
+    <a href="https://linkedin.com/in/teu-usuario" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" />
+    </a>
+    <a href="https://instagram.com/teu-usuario" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+    </a>
+  </div>
+
+  <footer>
+    Made with 💙 by <span>Deryck</span>
+  </footer>
 </body>
 </html>
